@@ -1,0 +1,77 @@
+.inputContainer, .subInput {
+    display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+    width: 95%;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.subInput {
+    border-bottom: none;
+}
+
+.filterContainer {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+.subContainer {
+    margin-left: 1em;
+    font-size: .85em;
+}
+
+.input {
+    height: 1.5em;
+	width: 35%;
+	margin-top: 0;
+    padding: 1px;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.selectionInput {
+	background-color: rgba(58, 58, 58, 0.3);
+	color: #fff;
+	border: none;
+	padding: .4em .8em;
+	font-family: 'Inter', sans-serif;
+	width: auto;
+	cursor: pointer;
+}
+
+.selectionInput {
+	background-color: rgba(58, 58, 58, 0.3);
+	color: #fff;
+	border: none;
+	padding: .4em .8em;
+	font-family: 'Inter', sans-serif;
+	width: auto;
+	cursor: pointer;
+}
+
+.selectionInput {
+	background-color: rgba(58, 58, 58, 0.3);
+	color: #fff;
+	border: none;
+	padding: .4em .8em;
+	font-family: 'Inter', sans-serif;
+	width: 40%;
+	cursor: pointer;
+}
+
+.selectionInput:disabled{
+	cursor: default;
+}
+
+.selectionInput option {
+	color: #333;
+	padding-top: 1em;
+}
+
+.colorSelectionBtn {
+	height: 1.5em;
+	width: 35%;
+    padding: 1px;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+

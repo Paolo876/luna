@@ -1,0 +1,10 @@
+.form {
+    width: 100%;
+    padding: .5em;
+}
+.form input {
+    margin-bottom: .5em;
+    width: 100%;
+    overflow: hidden;
+    color: inherit;
+}

@@ -1,0 +1,23 @@
+.container{
+    bottom: 5%;
+    padding: .2em;
+    text-align: center;
+}
+
+.container p {
+    max-width: 60em;
+}
+
+.content {
+    font-size: 1.2em;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+}
+
+.author {
+    margin-top: .5em;
+    font-size: .9em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+}

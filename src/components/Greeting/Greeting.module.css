@@ -1,0 +1,9 @@
+.greeting {
+    top: 32%;
+    background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 60%);
+}
+
+.greeting p {
+    font-size: 5em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}

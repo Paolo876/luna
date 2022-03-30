@@ -1,0 +1,65 @@
+form.form, .addBtnContainer {
+    position: relative;
+    /* height: 100%; */
+    margin-top: auto;
+    margin-bottom: 0;
+    align-items: flex-end;
+    flex-direction: column;
+    display: flex;
+}
+
+.form .errorMsg {
+    position: absolute;
+    left: 0%;
+    bottom: 0;
+    opacity: .8;
+    font-style: italic;
+}
+
+.form .input {
+    font-weight: 300;
+    height: 2.4em;
+    opacity: 1;
+    /* margin: auto 0; */
+
+}
+
+.form .input::placeholder{
+    font-weight: 200;
+}
+
+.form .submitBtn {
+    padding: auto 2.4em;
+    line-height: 2em;
+    margin-left: 1.2em;
+}
+
+.form .cancelBtn {
+    padding: auto 2.4em;
+    line-height: 2em;
+    opacity: .8;
+
+}
+
+.form .btnContainer {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: .6em;
+}
+
+.addBtnContainer {
+    margin-bottom: .2em;
+}
+.addBtn {
+    align-self: flex-end;
+    margin-bottom: .6em;
+    margin-right: 0em;
+    padding: 0 1.6em;
+    line-height: 2.2em;
+    font-size: .8em;
+}
+
+
+

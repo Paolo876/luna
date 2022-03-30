@@ -1,0 +1,19 @@
+.todos {
+    top: 52%;
+    left: inherit;
+    right: 1%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    text-align: left;
+    min-width: 22em;
+    /* padding: .5em; */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    bottom: 1;
+}
+
+.todos .header {
+    margin-top: .8em;
+    margin-bottom: .4em;
+    margin-left: .5em;
+    font-size: 1.6em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}

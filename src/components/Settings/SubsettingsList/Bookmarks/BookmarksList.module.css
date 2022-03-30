@@ -1,0 +1,51 @@
+.listContainer {
+    overflow-y: auto;
+    max-height: 18.5em;
+}
+
+.listContainer p {
+    line-height: 1em;
+}
+.listContainer li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.246);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.listContainer div p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 26ch;
+
+    overflow: hidden;
+    margin: 0;
+    line-height: 1em;
+}
+
+.listContainer .url {
+    font-style: italic;
+    opacity: .5;
+    margin-top: .1em;
+    font-size: .75em;
+    overflow: hidden;
+}
+
+.listContainer img {
+    height: 20px;
+    width: auto;
+    margin: .8em;
+}
+
+.clearBtn {
+    justify-self: flex-end;
+    height: auto;
+    margin-left: auto;
+    margin-right: .4em;
+}
+
+
+

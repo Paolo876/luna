@@ -1,0 +1,40 @@
+.listItem {
+    position: relative;
+}
+
+.listItem a {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    border-radius: 20%;
+    padding: 0;
+    margin: .2em;
+    text-align: center;
+
+}
+.listItem img {
+    height: 40px;
+    width: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: .5em;
+    border-radius: 20%;
+
+}
+
+.title {
+    position: absolute;
+    bottom: -20%;
+    right: 70%;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 25ch;
+    background-color: rgba(199, 199, 199, 0.5);
+    padding: .2em .4em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+
+}

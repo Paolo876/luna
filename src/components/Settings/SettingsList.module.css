@@ -1,0 +1,46 @@
+.settingsList {
+    border-right: 1px solid #1f1f1f;
+    opacity: .9;
+    margin: 1em 0;
+}
+
+.active {
+    background: rgba(0,0,0,.4);
+}
+
+.settingsList li:first-child {
+    margin-bottom: 1.2em;
+    position: relative;
+}
+.settingsList li:first-child::after{
+    content: "";
+    position: absolute;
+    bottom: -25%;
+    left: 0;
+    right: 0;
+    margin-left: 1.2em;
+    width: 80%;
+    height: 1%;
+    background-color: #1f1f1f;
+    opacity: .4;
+}
+
+.settingsList li:nth-child(8) {
+    margin-top: 5em;
+    /* margin-bottom: 2em; */
+}
+
+.settingsList li button {
+    display: block;
+    color: #ebebeb;
+    font-size: .95em;
+    font-family: "Questrial", sans-serif;
+    opacity: .8;
+    padding: .75em 2em .75em 1.2em;
+    width: 100%;
+    text-align: left;
+}
+
+.settingsList li button:hover {
+    opacity: 1;
+}

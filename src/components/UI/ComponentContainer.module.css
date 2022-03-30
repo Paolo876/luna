@@ -1,0 +1,26 @@
+.component-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ebebeb;
+    width: fit-content;
+    left: 0; 
+    right: 0; 
+    margin: 0 auto;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.overlay {
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    cursor: grab;
+    z-index: 10;
+    border: 1px dotted teal;
+}
+
+

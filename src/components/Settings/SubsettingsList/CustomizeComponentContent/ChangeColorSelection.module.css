@@ -1,0 +1,8 @@
+.colorSelectionBtn {
+	height: 1.5em;
+	width: 35%;
+	margin-top: 0 !important;
+    padding: 1px;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+

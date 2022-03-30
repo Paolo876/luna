@@ -1,0 +1,108 @@
+.backgroundSelectionContainer{
+    margin-bottom: 1.25em;
+    position: relative;
+    padding-left: .5em;
+    padding-bottom: .3em;
+    cursor: pointer;
+}
+
+
+.backgroundSelectionContainer::after {
+    position: absolute;
+    content: "";
+    height: 1%;
+    width: 95%;
+    bottom: -10%;
+    left: 0;
+    background-color: #c0c0c0;
+    margin: 0 auto;
+    opacity: .3;
+}
+
+.backgroundSelectionContainer p {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.backgroundSelectionList {
+    display: flex;
+    gap: .4em;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-right: 1em;
+}
+
+.backgroundSelectionList button {
+    margin-top: .5em;
+}
+
+.backgroundSelectionList img {
+    height: 4em;
+    opacity: .8;   
+    border: 2px solid transparent;
+}
+
+.backgroundSelectionContainer .btnContainer {
+    margin-right: 1em;
+}
+
+ .btnContainer {
+    display: flex;
+    justify-content: right;
+    gap: .2em;
+    
+}
+
+ .btnContainer button {
+    margin: .2em 0 0 0;
+    padding: .3em .9em;
+    line-height: 1.5em;
+    font-size: .8em;
+}
+
+
+.btnContainer p em {
+    font-family: 'Source Sans Pro', sans-serif; 
+    opacity: .9;
+    margin-right: .5em;
+    line-height: 1.2em;
+    font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+
+.icon {
+    transform: translateY(.2em);
+    color: #45a198;
+}
+
+.renewIcon {
+    font-size: 1.2em !important;
+    transform: translateY(.1em) translateX(.2em);
+}
+
+.selectedCategory {
+    background-color: rgba(88, 88, 88, 0.3);
+}
+
+.backgroundSelectionList .selectedBg {
+    border: 2px solid teal;
+}
+
+.backgroundSelectionList .selectedBg img {
+    opacity: 1;
+}
+
+.saveChangesBtn {
+    margin-top: 1.5em !important;
+}

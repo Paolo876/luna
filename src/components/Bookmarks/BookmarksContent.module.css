@@ -1,0 +1,7 @@
+.listContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    padding-left: 1em;
+    padding-right: 1em;
+}

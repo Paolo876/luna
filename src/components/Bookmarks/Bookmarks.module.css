@@ -1,0 +1,25 @@
+.bookmarksBtn {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    color: #ebebeb;
+    opacity: .8;
+    -webkit-transition: .5s all ease-in-out;
+    transition: .5s all ease-in-out;
+    line-height: 1em;
+    z-index: 3;
+
+}
+
+.modals {
+    position: absolute;
+    top: 1em;
+    z-index: 5;
+    right: .0;
+    /* opacity: .9; */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border: 1px solid rgba(172, 172, 172, 0.3);
+    border-right: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+}

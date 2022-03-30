@@ -1,0 +1,21 @@
+.time {
+    top: 12%;
+    background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 70%); 
+    text-align: center;
+    color: #ebebeb;
+
+}
+
+.time h1 {
+    font-size: 7em;
+    line-height: 1em;
+    font-weight: inherit;
+    text-shadow: 0 0 10px rgba(141, 91, 91, 0.1);  
+    align-self:center;
+}
+
+.time p {
+    font-size: 1.8em;
+    text-shadow: 0 0 10px rgba(141, 91, 91, 0.1);  
+
+}

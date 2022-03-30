@@ -1,0 +1,63 @@
+.listItem {
+    font-family: "Inter", sans-serif;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: .9;
+}
+
+.listItem:hover {
+    opacity: 1;
+}
+
+.listItem form {
+    width: 80%;
+}
+
+.text, .editTodoInput {
+    font-size: .9em;
+    margin-top: .2em;
+    padding-left: 1em;
+    width: 80%;
+    display: inline-block;
+    line-height: 2.3em;
+    text-align: left;
+    border-bottom: none;
+
+}
+
+.editTodoInput {
+    width: 100%;
+    height: auto;
+}
+
+.editTodoInput:focus {
+    opacity: 1;
+    border-bottom: none;
+}
+
+.finishTodo {
+    opacity: .6;
+    font-style: italic;
+    text-decoration: line-through;
+    -webkit-transform: translateX(0.25em);
+            transform: translateX(0.25em);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+
+.editBtn, .deleteBtn {
+    color: #4db6ac;
+    margin-left: .2em;
+}
+
+
+.buttonDisabled {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.2);
+}

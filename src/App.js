@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+
+import Background from './components/Background/Background';
+import Settings from './components/Settings/Settings';
+
+import classes from './App.module.css';
+import NamePrompt from './components/Prompt/NamePrompt';
+import LocationPrompt from './components/Prompt/LocationPrompt';
+import ComponentsList from './components/ComponentsList';
 
 function App() {
+  const userName = useSelector(state => state.user.userInfo.name);
+  const location = useSelector(state => state.settings.location).geolocationAllowed;
+  const userNameNull = (userName === null || userName === "");
+  const locationNull = (location === null || location === "");
+
+  let prompt;
+  if(userNameNull){
+    prompt = <NamePrompt/>
+  } else if(locationNull) {
+    prompt = <LocationPrompt/>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {userNameNull || locationNull
+      ? 
+        <>{prompt}</>
+      : 
+      <>
+        <Background  className={`${classes.App}`}/>
+        <Settings/>
+        <ComponentsList/>
+      </>}
+
+      <footer className={classes.footer}>
+        <p>Designed and Developed by Paolo Bugarin. Copyright <sup>©</sup> 2022. All Rights Reserved.</p>
+      </footer>
+    </>
+
   );
 }
 
 export default App;
+
+

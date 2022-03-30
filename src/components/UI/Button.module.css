@@ -1,0 +1,32 @@
+.button {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    line-height: 2.5em;
+    border-radius: .2em;
+    background-color: #45a198;
+    margin: auto;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.button:hover {
+    transition: filter 500ms ease-in-out;
+    -webkit-filter: brightness(110%);
+    filter: brightness(110%);
+
+}
+
+.button:disabled {
+    background-color: rgba(46, 46, 46, 0.9) !important;
+    opacity: .7 !important;
+    cursor: default;
+}
+
+.button:disabled:hover {
+    filter: none;
+}

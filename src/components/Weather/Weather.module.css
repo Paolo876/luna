@@ -1,0 +1,49 @@
+.container {
+    top: 45%;
+    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 40%, transparent 80%); 
+    text-align: center;
+    min-width: 15em;
+    padding: .5em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    bottom: 1;
+}
+
+.header {
+    font-size: 1.2em;
+}
+.contentContainer {
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    flex: auto;
+    margin: .5em 2em 0 2em;
+    /* width: 60%; */
+}
+
+.contentContainer::after{
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-color: #ebebeb;
+    opacity: .6;
+    height: 100%;
+    width: 1px;
+    margin: auto;
+}
+
+.weatherIconContainer img {
+    height: 4.5em;
+}
+
+.tempContainer {
+    width: 50%;
+}
+
+.weatherIconContainer{
+    font-size: .75em;
+    width: 50%;
+}

@@ -1,0 +1,23 @@
+.App {
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  width: 100vw;
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: .85em;
+  opacity: .66;
+}
+
+footer p {
+  opacity: .7;
+  color: #ebebeb;
+  font-size: .8em;
+  font-family: "Roboto", sans-serif;
+}
+

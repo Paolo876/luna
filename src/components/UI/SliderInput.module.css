@@ -1,0 +1,25 @@
+.sliderInput {
+    opacity: .9;
+	outline: none;
+	width: auto;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	position: relative;
+	-webkit-appearance: none;
+	height: .25em;
+	border-radius: 5px;  
+	background: rgb(170, 170, 170);
+	outline: none;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+.sliderInput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+	appearance: none;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 50%; 
+	cursor: pointer;
+}

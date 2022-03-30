@@ -1,0 +1,22 @@
+.search {
+    top: 0;
+    width: 30em;
+    left: 2%;
+    right: inherit;
+    flex-direction: row;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.search form {
+    width: 100%;
+}
+
+
+
+.searchIcon {
+    width: 15%;
+    transform: translate(-140%, 25%);
+} 

@@ -1,0 +1,52 @@
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 6;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.9));
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    color: #ebebeb;
+    gap: 1em;
+
+}
+
+.container h3 {
+    margin: 10% 15% 3% 10%;
+    font-family: 'Inter', sans-serif;
+    font-size: 3em;
+    font-weight: 400;
+}
+
+.container p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2em;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.btn {
+    margin: 5em auto
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        font-size: .8em;
+    }
+    .container h3 {
+        margin: 5em 2em 1em 2em;
+        
+    }
+    .container p {
+        margin-top: 4em;
+        width: 60%;
+    }
+
+}
+  

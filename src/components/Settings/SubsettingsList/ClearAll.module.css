@@ -1,0 +1,18 @@
+.promptContainer {
+    margin-top: 4em;
+    text-align: center;
+}
+
+.promptContainer button {
+    margin-top: 1.5em;
+    background-color: transparent;
+    opacity: .8;
+    border-bottom: 1px solid transparent;
+
+}
+
+.promptContainer button:hover {
+    border-bottom: 1px solid teal;
+    border-width: 80%;
+    opacity: 1;
+}
