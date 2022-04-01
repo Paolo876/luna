@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ComponentContainer from "../UI/ComponentContainer";
 import classes from "./Weather.module.css"
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+// require('dotenv').config();
 
 const Weather = () => {
 
