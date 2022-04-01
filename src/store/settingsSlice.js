@@ -1,21 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import initialConfigurations from "./initialConfigurations";
 
-let initBgConfig = JSON.parse(localStorage.getItem('backgroundConfig'));
+// let initBgConfig = JSON.parse(localStorage.getItem('backgroundConfig'));
 let initComponentsConfig = JSON.parse(localStorage.getItem('componentsConfig'));
 let initlocationConfig = JSON.parse(localStorage.getItem('locationConfig'));
 let initUIConfig = JSON.parse(localStorage.getItem('uiConfig'));
 
-if(initBgConfig === null) {
-    initBgConfig = initialConfigurations("background");
-    localStorage.setItem('backgroundConfig', JSON.stringify(initBgConfig));
-} 
+// if(initBgConfig === null) {
+//     initBgConfig = initialConfigurations("background");
+//     localStorage.setItem('backgroundConfig', JSON.stringify(initBgConfig));
+// } 
 if(initComponentsConfig === null) {
     initComponentsConfig = initialConfigurations("components")
     localStorage.setItem('componentsConfig', JSON.stringify(initComponentsConfig));
 } 
 if(initlocationConfig === null) {
-    initlocationConfig = {geolocationAllowed: null}
+    initlocationConfig = { isGeolocationAllowed: null}
     localStorage.setItem('locationConfig', JSON.stringify(initlocationConfig));
 
 }
@@ -24,19 +24,19 @@ if(initUIConfig === null) {
     localStorage.setItem('uiConfig', JSON.stringify(initUIConfig));
 }
 
-export const fetchBackground = createAsyncThunk(
-    'fetchBackground', async () => {
-        return fetch(`https://source.unsplash.com/1920x1080/?wallpapers`)
-        .then( data => {
-            return data.url
-        })
-    }
-)
+// export const fetchBackground = createAsyncThunk(
+//     'fetchBackground', async () => {
+//         return fetch(`https://source.unsplash.com/1920x1080/?wallpapers`)
+//         .then( data => {
+//             return data.url
+//         })
+//     }
+// )
 
 const settingsSlice = createSlice({
     name: 'settings',
     initialState: {
-        background: initBgConfig,
+        // background: initBgConfig,
         components: initComponentsConfig,
         editorMode: {isActive: false, changeComponentPosition: []},
         location: initlocationConfig,
@@ -44,29 +44,29 @@ const settingsSlice = createSlice({
     },
     reducers: {
         // background
-        generateBackground(state, {payload}){
-            const images = require.context("../assets", true);
-            let generatedImg
-            if(payload != null) {
-                generatedImg = images(`./bg_${payload}.jpg`);
-            } else {
-                generatedImg = images(`./bg_default_${ Math.floor(Math.random() * 5) + 1 }.jpg`);
-            }
+        // generateBackground(state, {payload}){
+        //     const images = require.context("../assets", true);
+        //     let generatedImg
+        //     if(payload != null) {
+        //         generatedImg = images(`./bg_${payload}.jpg`);
+        //     } else {
+        //         generatedImg = images(`./bg_default_${ Math.floor(Math.random() * 5) + 1 }.jpg`);
+        //     }
 
-            state.background.source = generatedImg;
-        },
-        setBackground(state, {payload = true}){
-            state.background.isSet = payload;    
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        },
-        removeBackground(state){
-            state.background.isSet = false;
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        },
-        setIsLocalBackground(state, {payload}){
-            state.background.isLocalBg = payload;
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        },
+        //     state.background.source = generatedImg;
+        // },
+        // setBackground(state, {payload = true}){
+        //     state.background.isSet = payload;    
+        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+        // },
+        // removeBackground(state){
+        //     state.background.isSet = false;
+        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+        // },
+        // setIsLocalBackground(state, {payload}){
+        //     state.background.isLocalBg = payload;
+        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+        // },
 
         // components
         setIsVisible(state, {payload}){
@@ -145,7 +145,7 @@ const settingsSlice = createSlice({
         },
         // UI
         toggleGeolocation(state, {payload}){
-            state.location.geolocationAllowed = payload;
+            state.location.isGeolocationAllowed = payload;
             localStorage.setItem('locationConfig', JSON.stringify(state.location))
         },
         changeFilter(state, {payload}){
@@ -180,21 +180,21 @@ const settingsSlice = createSlice({
             window.location.reload();
         },
     },
-    extraReducers:{
-        // [fetchBackground.pending]: (state, action) => {
-        //     state.status = 'loading'
-        // },
-        [fetchBackground.fulfilled] : (state, {payload}) => {
-            state.background.isSet = false;
-            state.background.source = payload
+    // extraReducers:{
+    //     // [fetchBackground.pending]: (state, action) => {
+    //     //     state.status = 'loading'
+    //     // },
+    //     [fetchBackground.fulfilled] : (state, {payload}) => {
+    //         state.background.isSet = false;
+    //         state.background.source = payload
 
-            const updateStorage = {...state.background}
-            updateStorage.isSet = false;
-            updateStorage.source = payload;
-            localStorage.setItem('backgroundConfig', JSON.stringify(updateStorage))
+    //         const updateStorage = {...state.background}
+    //         updateStorage.isSet = false;
+    //         updateStorage.source = payload;
+    //         localStorage.setItem('backgroundConfig', JSON.stringify(updateStorage))
 
-        }
-    }
+    //     }
+    // }
 });
 
 

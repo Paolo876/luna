@@ -2,53 +2,37 @@ import { createSlice } from "@reduxjs/toolkit";
 import generateUID from "../utils/generate-uid.js"
 
 let initTodoItems = JSON.parse(localStorage.getItem('todos'));
-if(initTodoItems === null) {
-    initTodoItems = [{text: "Eat healthy", id: "01", isFinished: false},{text: "Exercise regularly", id: "02", isFinished: false},{text: "Learn something new", id: "03", isFinished: false}];
+if(!initTodoItems) {
+    initTodoItems = [{text: "Eat", id: "01", isFinished: false},{text: "Exercise", id: "02", isFinished: false},{text: "Learn something new", id: "03", isFinished: false}];
     localStorage.setItem('todos', JSON.stringify(initTodoItems));
 } 
 
 const todoSlice = createSlice({
     name: 'todo',
-    initialState: {
-        todoItems: initTodoItems
-    },
+    initialState: { items: initTodoItems },
     reducers: {
         addTodo(state, action) {
             const newTodo = {text: action.payload, id: generateUID(), isFinished: false};
-            state.todoItems.push(newTodo);
-
-            let storageTodos = JSON.parse(localStorage.getItem('todos'));
-            storageTodos = [...storageTodos, newTodo];
-            localStorage.setItem('todos', JSON.stringify(storageTodos));
+            state.items.push(newTodo);
+            localStorage.setItem('todos', JSON.stringify(state.items));
         },
         editTodo(state, action) {
-            const item = state.todoItems.find(item => item.id === action.payload.id);
+            const item = state.items.find(item => item.id === action.payload.id);
             item.text = action.payload.text;
-
-            let storageTodos = JSON.parse(localStorage.getItem('todos'));
-            const storageItem = storageTodos.find(item => item.id === action.payload.id);
-            storageItem.text = action.payload.text;
-            localStorage.setItem('todos', JSON.stringify(storageTodos));
+            localStorage.setItem('todos', JSON.stringify(state.items));
         },
         deleteTodo(state, action) {
-            state.todoItems = state.todoItems.filter(item => item.id !== action.payload);
-
-            let storageTodos = JSON.parse(localStorage.getItem('todos'));
-            storageTodos = storageTodos.filter(item => item.id !== action.payload);
-            localStorage.setItem('todos', JSON.stringify(storageTodos));
+            state.items = state.items.filter(item => item.id !== action.payload);
+            localStorage.setItem('todos', JSON.stringify(state.items));
         },
         clearTodo(state) {
-            state.todoItems = [];
-            localStorage.setItem('todos', '[]');
+            state.items = [];
+            localStorage.setItem('todos', JSON.stringify(state.items));
         },
         finishTodo(state, action){
-            const item = state.todoItems.find(item => item.id === action.payload);
+            const item = state.items.find(item => item.id === action.payload);
             item.isFinished = !item.isFinished;
-
-            let storageTodos = JSON.parse(localStorage.getItem('todos'));
-            const storageItem = storageTodos.find(item => item.id === action.payload);
-            storageItem.isFinished = !storageItem.isFinished;
-            localStorage.setItem('todos', JSON.stringify(storageTodos));
+            localStorage.setItem('todos', JSON.stringify(state.items));
         }
     }
 })

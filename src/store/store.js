@@ -3,9 +3,12 @@ import todoSlice from './todoSlice';
 import userSlice from './userSlice';
 import settingsSlice from './settingsSlice';
 import bookmarksSlice from './bookmarksSlice';
+import backgroundSlice from "./backgroundSlice";
 
 const store = configureStore({
-    reducer: {  todos: todoSlice.reducer, 
+    reducer: {  
+                background: backgroundSlice.reducer,
+                todos: todoSlice.reducer, 
                 user: userSlice.reducer, 
                 settings: settingsSlice.reducer, 
                 bookmarks: bookmarksSlice.reducer

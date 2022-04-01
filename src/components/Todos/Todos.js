@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSettingsRedux } from "../../hooks/useSettingsRedux";
 import { useRef } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
@@ -8,8 +8,10 @@ import classes from "./Todos.module.css";
 
 const Todos = () => {
     const ref = useRef();
-    const addedStyles = useSelector(state => state.settings.components).find(item => item.name === "todos").addedStyles;
-    const containerColor = useSelector(state => state.settings.ui.containerColor);
+    const { components, ui } = useSettingsRedux();
+    const addedStyles = components.find(item => item.name === "todos").addedStyles;
+    const { containerColor } = ui;
+
     const styles = {...addedStyles};
     styles.background = containerColor;
     return (  

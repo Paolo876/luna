@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
 import { useRef } from "react";
+import { useSettingsRedux } from '../../hooks/useSettingsRedux';
 import SearchIcon from '@mui/icons-material/Search';
 import ComponentContainer from "../UI/ComponentContainer";
 import Input from '../UI/Input';
@@ -9,10 +9,14 @@ import classes from "./Search.module.css";
 
 const Search = () => {
     const ref = useRef();
-    const addedStyles = useSelector(state => state.settings.components).find(item => item.name === "search").addedStyles;
+    const { components } = useSettingsRedux();
+    const addedStyles = components.find(item => item.name === "search").addedStyles;
     const inputRef = useRef();
+    
     const submitHandler = (e) => {
       e.preventDefault();
+
+      window.location.href = `https://www.google.com/search?q=${inputRef.current.value}`;
     }
 
     return (  

@@ -1,5 +1,5 @@
 const initialConfigurations = (payload) => {
-  if(payload === "background") return {isSet: false, isLocalBg: true, source: "", filter: {brightness: 100, contrast: 100, saturate: 100}};
+  if(payload === "background") return {isRandom: true, isLocal: true, source: null, filter: {brightness: 100, contrast: 100, saturate: 100}};
 
   if(payload === "components") {
       return [

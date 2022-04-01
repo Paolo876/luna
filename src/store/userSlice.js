@@ -1,25 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 let initUserInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-if(initUserInfo === null) {
-    initUserInfo = {name: "", birthday: "", };
+if(!initUserInfo) {
+    initUserInfo = { name: null, birthday: null, };
     localStorage.setItem('userInfo', JSON.stringify(initUserInfo));
 } 
 const userSlice = createSlice({
     name: "user",
-    initialState: {
-        userInfo: initUserInfo
-    },
+    initialState: initUserInfo,
     reducers: {
         setUserName(state, action){
-            state.userInfo.name = action.payload;
-            localStorage.setItem('userInfo', JSON.stringify(state.userInfo))
+            state.name = action.payload;
+            localStorage.setItem('userInfo', JSON.stringify(state))
         },
 
         setBirthday(state, action){
-            state.userInfo.birthday = action.payload;
-            localStorage.setItem('userInfo', JSON.stringify(state.userInfo));
+            state.birthday = action.payload;
+            localStorage.setItem('userInfo', JSON.stringify(state));
         }
     }
 })

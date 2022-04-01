@@ -19,7 +19,6 @@
     position: relative;
     flex: auto;
     margin: .5em 2em 0 2em;
-    /* width: 60%; */
 }
 
 .contentContainer::after{

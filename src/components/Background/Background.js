@@ -1,27 +1,28 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { settingsActions, fetchBackground } from "../../store/settingsSlice";
+import { useBackgroundRedux } from "../../hooks/useBackgroundRedux";
 
-const Background = (props) => {
-    const dispatch = useDispatch();
-    const bg = useSelector(state => state.settings.background);
-    const filter = bg.filter;
+const Background = ({ className }) => {
+    const { background, generateLocalBackground, fetchBackground } = useBackgroundRedux();
+    const { isRandom, isLocal, filter} = background;
+
      useEffect(()=>{
-        if(!bg.isSet) {
-            if(bg.isLocalBg) {
-                dispatch(settingsActions.generateBackground())
-            } else {
-                dispatch(fetchBackground());
+        if(isRandom) {
+            if(isLocal) {
+                generateLocalBackground();
+            } 
+            else {
+                fetchBackground();
             };
-            
         }
-    },[bg.isSet, bg.isLocalBg, dispatch]);
+    },[isRandom, isLocal]);
 
-    const bgValue = `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url(${bg.source}) no-repeat fixed center/cover`;
+    const bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${background.source}) no-repeat fixed center/cover`;
 
     return (  
-        <div {...props} style={{background: bgValue, filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturate}%)`}}> 
-                {props.children}
+        <div 
+            className={className}
+            style={{background: bgValue, filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturate}%)`}}
+        > 
         </div>
     );
 }
