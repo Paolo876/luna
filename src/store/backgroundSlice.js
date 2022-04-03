@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import initialConfigurations from "./initialConfigurations";
 let initBackgroundConfig = JSON.parse(localStorage.getItem('backgroundConfig'));
 
@@ -6,15 +6,6 @@ if(!initBackgroundConfig){
     initBackgroundConfig = initialConfigurations("background");
     localStorage.setItem('backgroundConfig', JSON.stringify(initBackgroundConfig));
 } 
-
-// export const fetchBackground = createAsyncThunk(
-//     'fetchBackground', async () => {
-//         return fetch(`https://source.unsplash.com/1920x1080/?wallpapers`)
-//         .then( data => {
-//             return data.url
-//         })
-//     }
-// )
 
 const backgroundSlice = createSlice({
     name: "background",
@@ -31,37 +22,34 @@ const backgroundSlice = createSlice({
             state.source = generatedImg;
         },
         setBackground(state, {payload = true}){
-            state.isSet = payload;    
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+            state.isRandom = !payload;    
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
         },
         removeBackground(state){
-            state.isSet = false;
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+            state.isRandom = true;
+            state.source = null;
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
         },
         setIsLocalBackground(state, {payload}){
-            state.isLocalBg = payload;
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
+            state.isLocal = payload;
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+        },
+        setFetchedBackground(state, {payload}){
+            state.source = payload
+        },
+        changeFilter(state, {payload}){
+            const filters = state.filter;
+
+            if(payload.id === "brightness") filters.brightness = payload.value;  
+            if(payload.id === "contrast") filters.contrast = payload.value;
+            if(payload.id === "saturate") filters.saturate = payload.value;
+            if(payload.id === "reset") state.filter = initialConfigurations("background").filter;
+        
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+
         },
     }, 
-    // extraReducers:{
-    //         // [fetchBackground.pending]: (state, action) => {
-    //         //     state.status = 'loading'
-    //         // },
-    //         [fetchBackground.fulfilled] : (state, {payload}) => {
-    //             state.isSet = false;
-    //             state.source = payload
-    
-    //             const updateStorage = {...state}
-    //             updateStorage.isSet = false;
-    //             updateStorage.source = payload;
-    //             localStorage.setItem('backgroundConfig', JSON.stringify(updateStorage))
-    
-    //         }
-    //     }
-    
-
-    }
-)
+})
 
 export const backgroundActions = backgroundSlice.actions;
 export default backgroundSlice;

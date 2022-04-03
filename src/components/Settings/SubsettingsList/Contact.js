@@ -1,9 +1,13 @@
+import { useSettingsRedux } from "../../../hooks/useSettingsRedux";
 import SubsettingsListContainer from "./SubsettingsListContainer";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import classes from "./Contact.module.css"
+
 const Contact = () => {
+    const { ui } = useSettingsRedux();
+    const { primaryColor } = ui;
     return (  
         <SubsettingsListContainer>
             <h3>Contact Me</h3>
@@ -18,9 +22,15 @@ const Contact = () => {
 
                 <h5>Links:</h5>
                 <div className={classes.linksContainer}>
-                    <a href="https://www.facebook.com/paolobugarin19//" target="_blank" rel="noreferrer"><FacebookIcon/><span>Facebook</span></a>
-                    <a href="https://github.com/Paolo876" target="_blank" rel="noreferrer"><GitHubIcon/><span>Github</span></a>
-                    <a href="https://www.instagram.com/paolo_bugarin/" target="_blank" rel="noreferrer"><InstagramIcon/><span>Instagram</span></a>
+                    <a href="https://www.facebook.com/paolobugarin19/" target="_blank" rel="noreferrer">
+                        <FacebookIcon style={{color: primaryColor}}/><span>Facebook</span>
+                    </a>
+                    <a href="https://github.com/Paolo876" target="_blank" rel="noreferrer">
+                        <GitHubIcon style={{color: primaryColor}}/><span>Github</span>
+                    </a>
+                    <a href="https://www.instagram.com/paolo_bugarin/" target="_blank" rel="noreferrer">
+                        <InstagramIcon style={{color: primaryColor}}/><span>Instagram</span>
+                    </a>
                 </div>
             </div>
         </SubsettingsListContainer>

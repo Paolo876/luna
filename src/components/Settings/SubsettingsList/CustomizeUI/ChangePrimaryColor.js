@@ -1,14 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import {settingsActions} from "../../../../store/settingsSlice"
+import { useSettingsRedux } from "../../../../hooks/useSettingsRedux";
+
 const ChangePrimaryColor = ({classes}) => {
-    const dispatch = useDispatch();
-    const currentColor = useSelector(state => state.settings.ui.primaryColor)
+    const { ui, changePrimaryColor } = useSettingsRedux();
+    const { primaryColor } = ui;
+
     return (  
         <div className={classes.inputContainer}>
             <p>Change Primary Color: </p>
-            <input type="color" className={classes.colorSelectionBtn}
-                    value={currentColor}
-                    onChange={(e)=> dispatch(settingsActions.changePrimaryColor(e.target.value))}/>
+            <input 
+                type="color" 
+                className={classes.colorSelectionBtn}
+                value={primaryColor}
+                onChange={ e => changePrimaryColor(e.target.value)}
+            />
         </div>
 
     );

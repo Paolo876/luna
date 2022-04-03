@@ -72,6 +72,12 @@
     font-weight: 200;
 }
 
+.error {
+    color: red;
+    font-style: italic;
+    font-size: .75em !important;
+}
+
 
 
 

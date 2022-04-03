@@ -1,15 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import initialConfigurations from "./initialConfigurations";
 
-// let initBgConfig = JSON.parse(localStorage.getItem('backgroundConfig'));
 let initComponentsConfig = JSON.parse(localStorage.getItem('componentsConfig'));
 let initlocationConfig = JSON.parse(localStorage.getItem('locationConfig'));
 let initUIConfig = JSON.parse(localStorage.getItem('uiConfig'));
 
-// if(initBgConfig === null) {
-//     initBgConfig = initialConfigurations("background");
-//     localStorage.setItem('backgroundConfig', JSON.stringify(initBgConfig));
-// } 
 if(initComponentsConfig === null) {
     initComponentsConfig = initialConfigurations("components")
     localStorage.setItem('componentsConfig', JSON.stringify(initComponentsConfig));
@@ -24,80 +19,33 @@ if(initUIConfig === null) {
     localStorage.setItem('uiConfig', JSON.stringify(initUIConfig));
 }
 
-// export const fetchBackground = createAsyncThunk(
-//     'fetchBackground', async () => {
-//         return fetch(`https://source.unsplash.com/1920x1080/?wallpapers`)
-//         .then( data => {
-//             return data.url
-//         })
-//     }
-// )
-
 const settingsSlice = createSlice({
     name: 'settings',
     initialState: {
         // background: initBgConfig,
         components: initComponentsConfig,
-        editorMode: {isActive: false, changeComponentPosition: []},
+        editorMode: { isActive: false, changeComponentPosition: [] },
         location: initlocationConfig,
         ui: initUIConfig
     },
     reducers: {
-        // background
-        // generateBackground(state, {payload}){
-        //     const images = require.context("../assets", true);
-        //     let generatedImg
-        //     if(payload != null) {
-        //         generatedImg = images(`./bg_${payload}.jpg`);
-        //     } else {
-        //         generatedImg = images(`./bg_default_${ Math.floor(Math.random() * 5) + 1 }.jpg`);
-        //     }
-
-        //     state.background.source = generatedImg;
-        // },
-        // setBackground(state, {payload = true}){
-        //     state.background.isSet = payload;    
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        // },
-        // removeBackground(state){
-        //     state.background.isSet = false;
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        // },
-        // setIsLocalBackground(state, {payload}){
-        //     state.background.isLocalBg = payload;
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-        // },
-
         // components
         setIsVisible(state, {payload}){
             const component = state.components.find(item => item.name === payload);
             component.isVisible = !component.isVisible;
-            localStorage.setItem('componentsConfig', JSON.stringify(state.components))
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
         },
         changeStyle(state, {payload}){
             const component = state.components.find(item => item.name === payload.name);
-            if(!component.addedStyles){
-                component.addedStyles = {};
-            }
+            if(!component.addedStyles)  component.addedStyles = {};
+            if(payload.id === "font")   component.addedStyles.fontFamily = payload.font;
+            if(payload.id === "weight") component.addedStyles.fontWeight = payload.weight;
+            if(payload.id === "color")  component.addedStyles.color = payload.color;
+            if(payload.id === "opacity")component.addedStyles.opacity = payload.opacity;
 
-            if(payload.id === "font"){
-                component.addedStyles.fontFamily = payload.font;
-            }
-
-            if(payload.id === "weight"){
-                component.addedStyles.fontWeight = payload.weight;
-            }
-
-            if(payload.id === "color"){
-                component.addedStyles.color = payload.color;
-            }
-
-            if(payload.id === "opacity"){
-                component.addedStyles.opacity = payload.opacity;
-            }
-
-            localStorage.setItem('componentsConfig', JSON.stringify(state.components))
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
         },
+
         resetStyle(state, {payload}){
             const defaultValues = initialConfigurations("components").find(item => item.name === payload);
             const component = state.components.find(item => item.name === payload);
@@ -135,9 +83,7 @@ const settingsSlice = createSlice({
 
         },
         resetComponentPositions(state){
-            state.components.forEach(item => {
-                delete item.addedStyles.transform;
-            });
+            state.components.forEach(item => delete item.addedStyles.transform);
             state.editorMode.isActive = false;
             state.editorMode.changeComponentPosition = []
             localStorage.setItem('componentsConfig', JSON.stringify(state.components));
@@ -148,20 +94,6 @@ const settingsSlice = createSlice({
             state.location.isGeolocationAllowed = payload;
             localStorage.setItem('locationConfig', JSON.stringify(state.location))
         },
-        changeFilter(state, {payload}){
-            const stateFilters = state.background.filter;
-            if(payload.id === "brightness"){
-                stateFilters.brightness = payload.value;
-            }
-            if(payload.id === "contrast"){
-                stateFilters.contrast = payload.value;
-            }
-            if(payload.id === "saturate"){
-                stateFilters.saturate = payload.value;
-            }
-            localStorage.setItem('backgroundConfig', JSON.stringify(state.background))
-
-        },
         changeContainerColor(state, {payload}){
             const colors = payload.color
             const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;
@@ -169,10 +101,19 @@ const settingsSlice = createSlice({
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))
 
         },
+        changeSettingsButtonPosition(state, {payload}){
+            state.ui.settingsPosition = payload;
+            localStorage.setItem('uiConfig', JSON.stringify(state.ui))
+
+        },
         changePrimaryColor(state, {payload}){
             state.ui.primaryColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))
 
+        }, 
+        resetUISettings(state){
+            state.ui = initialConfigurations("ui");
+            localStorage.setItem('uiConfig', JSON.stringify(state.ui))
         },
         //CLEAR SETTINGS
         clearAllSettings(state){
@@ -180,21 +121,6 @@ const settingsSlice = createSlice({
             window.location.reload();
         },
     },
-    // extraReducers:{
-    //     // [fetchBackground.pending]: (state, action) => {
-    //     //     state.status = 'loading'
-    //     // },
-    //     [fetchBackground.fulfilled] : (state, {payload}) => {
-    //         state.background.isSet = false;
-    //         state.background.source = payload
-
-    //         const updateStorage = {...state.background}
-    //         updateStorage.isSet = false;
-    //         updateStorage.source = payload;
-    //         localStorage.setItem('backgroundConfig', JSON.stringify(updateStorage))
-
-    //     }
-    // }
 });
 
 

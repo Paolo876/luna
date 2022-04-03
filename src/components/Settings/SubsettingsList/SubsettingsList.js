@@ -2,14 +2,13 @@ import General from "./General";
 import EditorMode from "./EditorMode";
 import Background from "./BackgroundSubsetting/Background";
 import CustomizeComponent from "./CustomizeComponent";
-import Bookmarks from "./Bookmarks/Bookmarks";
+// import Bookmarks from "./Bookmarks/Bookmarks";
 import ClearAll from "./ClearAll";
 import About from "./About";
 import CustomizeUI from "./CustomizeUI/CustomizeUI";
 import Contact from "./Contact";
 
 const SubsettingsList = (props) => {
-    // console.log(props.selectedSubsetting)
     let loadComponent;
     switch (props.selectedSubsetting) {
         case ("editor-subsetting") :
@@ -24,9 +23,9 @@ const SubsettingsList = (props) => {
         case ("customize-ui-subsetting") :
             loadComponent = <CustomizeUI/>
             break;
-        case ("bookmarks-subsetting") :
-            loadComponent = <Bookmarks/>
-            break;
+        // case ("bookmarks-subsetting") :
+        //     loadComponent = <Bookmarks/>
+        //     break;
         case ("clear-all-subsetting") :
             loadComponent = <ClearAll/>
             break;

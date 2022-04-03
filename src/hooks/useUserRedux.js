@@ -6,12 +6,10 @@ export const useUserRedux = () => {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 
-    const setUserName = name => dispatch(userActions.setUserName(capitalizeFirstLetter(name)));
-    
-
     return {
         name: user.name,
         birthday: user.birthday,
-        setUserName,
+        setUserName: name => dispatch(userActions.setUserName(capitalizeFirstLetter(name))),
+        setBirthday: value => dispatch(userActions.setBirthday(value))
     }
 }

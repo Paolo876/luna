@@ -1,37 +1,45 @@
-import { useSelector, useDispatch } from "react-redux";
-import { settingsActions, fetchBackground } from "../../../../store/settingsSlice";
+import { useBackgroundRedux } from "../../../../hooks/useBackgroundRedux";
+import { useSettingsRedux } from "../../../../hooks/useSettingsRedux";
+
 import classes from "./Background.module.css"
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import Button from "../../../UI/Button";
 
 const FetchBackgrounds = () => {
-    const bg = useSelector(state => state.settings.background);
-    const currentPrimaryColor = useSelector(state => state.settings.ui.primaryColor);
-    const dispatch = useDispatch();
+    const { background, setIsLocalBackground, fetchBackground, setBackground, removeBackground, isLoading, error } = useBackgroundRedux();
+    const { ui } = useSettingsRedux();
+    const currentPrimaryColor = ui.primaryColor;
+
     const containerClickHandler = () => {
-        if(bg.isLocalBg) {
-            dispatch(fetchBackground())
-            dispatch(settingsActions.setIsLocalBackground(false))
+        if(background.isLocal) {
+            removeBackground();
+            fetchBackground()
+            setIsLocalBackground(false);
         };   
     }
     
     const generateBackgroundHandler = () => {
-      dispatch(settingsActions.setIsLocalBackground(false))
-      dispatch(fetchBackground());
+      removeBackground();
+      setIsLocalBackground(false);
+      fetchBackground();
     }
-    const setDefaultBgHandler = () => {
-        dispatch(settingsActions.setBackground());
-      }
+
     return (  
         <>
-            <div className={`${classes.backgroundSelectionContainer} ${!bg.isLocalBg && classes.selectedCategory}`} onClick={containerClickHandler}>
-                <p>Fetch Random Backgrounds from unsplash.com: {!bg.isLocalBg && <span className={classes.icon}><CheckCircleOutlineIcon style={{color: currentPrimaryColor}}/></span>}</p>
+            <div className={`${classes.backgroundSelectionContainer} ${!background.isLocal && classes.selectedCategory}`} onClick={containerClickHandler}>
+                <p>Fetch Random Backgrounds from unsplash.com: {!background.isLocal && <span className={classes.icon}><CheckCircleOutlineIcon style={{color: currentPrimaryColor}}/></span>}</p>
                 <div className={classes.btnContainer}>
-                    <Button disabled={bg.isLocalBg} onClick={generateBackgroundHandler}>Generate Background <AutorenewIcon className={classes.renewIcon}/></Button>
+                    <Button 
+                        disabled={background.isLocal || isLoading } 
+                        onClick={generateBackgroundHandler}
+                    >
+                        {isLoading ? "Fetching Background..." : "Generate Background"} <AutorenewIcon className={classes.renewIcon}/>
+                    </Button>
                 </div>
                 <div className={classes.btnContainer}>
-                    <Button disabled={bg.isLocalBg || bg.isSet} onClick={setDefaultBgHandler}>Set as Default</Button>
+                    {error && <p className={classes.error}>Error: {error}</p>}
+                    <Button disabled={background.isLocal || !background.isRandom} onClick={() => setBackground(true)}>Set as Default</Button>
                 </div>
             </div>
 
