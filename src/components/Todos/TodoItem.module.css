@@ -54,6 +54,7 @@
 .editBtn, .deleteBtn {
     color: #4db6ac;
     margin-left: .2em;
+    transform: scale(.8);
 }
 
 

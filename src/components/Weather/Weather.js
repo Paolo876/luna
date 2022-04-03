@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import ComponentContainer from "../UI/ComponentContainer";
 import classes from "./Weather.module.css"
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-// require('dotenv').config();
 
-const Weather = () => {
+const Weather = React.memo(() => {
 
     const ref = useRef();   //for react-draggable
     const [data, setData] = useState(null);
@@ -53,6 +52,6 @@ const Weather = () => {
             }
         </ComponentContainer>
     );
-};
+});
  
 export default Weather;

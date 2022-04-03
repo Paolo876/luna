@@ -13,7 +13,6 @@ const TodoItem = (props) => {
     const [ text, setText ] = useState(props.text);
     const { deleteTodo, editTodo, finishTodo } = useTodosRedux();
     const { ui } = useSettingsRedux();
-    const { currentPrimaryColor } = ui;
 
 
     const inputRefCallback = (input) => {
@@ -60,10 +59,10 @@ const TodoItem = (props) => {
                     disabled={props.isFinished} 
                     className={`${classes.editBtn} ${props.isFinished && classes.buttonDisabled}`}
                 >
-                    <EditIcon style={{color: currentPrimaryColor}}/>
+                    <EditIcon style={{color: `${props.isFinished ? "#2e2e2e": ui.primaryColor}`}}/>
                 </button>
                 <button onClick={() => deleteTodo(props.id)} className={classes.deleteBtn}>
-                    <ClearIcon  style={{color: currentPrimaryColor}}/>
+                    <ClearIcon  style={{color: ui.primaryColor}}/>
                 </button>
             </div>
         </li>

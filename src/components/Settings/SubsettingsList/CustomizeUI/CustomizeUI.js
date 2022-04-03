@@ -5,9 +5,10 @@ import AdjustBackgroundFilter from "./AdjustBackgroundFilter";
 import ChangeContainerColor from "./ChangeContainerColor";
 import ChangePrimaryColor from "./ChangePrimaryColor";
 import SettingsButtonPosition from "./SettingsButtonPosition";
-import Button from "../../../UI/Button"
+import Button from "../../../UI/Button";
 
 import classes from "./CustomizeUI.module.css"
+import ToggleHints from "./ToggleHints";
 const CustomizeUI = () => {
     const { resetUISettings } = useSettingsRedux();
     return (  
@@ -17,6 +18,7 @@ const CustomizeUI = () => {
             <ChangeContainerColor classes={classes}/>
             <ChangePrimaryColor classes={classes}/>
             <SettingsButtonPosition classes={classes}/>
+            <ToggleHints classes={classes}/>
             <Button onClick={resetUISettings}>Reset to Default</Button>
         </SubsettingsListContainer>
     );

@@ -99,18 +99,19 @@ const settingsSlice = createSlice({
             const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;
             state.ui.containerColor = value;
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-
         },
         changeSettingsButtonPosition(state, {payload}){
             state.ui.settingsPosition = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-
         },
         changePrimaryColor(state, {payload}){
             state.ui.primaryColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-
-        }, 
+        },
+        toggleHintsModal(state, {payload}){
+            state.ui.isHintsShown = payload;
+            localStorage.setItem('uiConfig', JSON.stringify(state.ui))
+        },
         resetUISettings(state){
             state.ui = initialConfigurations("ui");
             localStorage.setItem('uiConfig', JSON.stringify(state.ui))

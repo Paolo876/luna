@@ -28,6 +28,7 @@ export const useSettingsRedux = () => {
       changeContainerColor: value => dispatch(settingsActions.changeContainerColor(value)),
       changePrimaryColor: value => dispatch(settingsActions.changePrimaryColor(value)),
       changeSettingsButtonPosition: value => dispatch(settingsActions.changeSettingsButtonPosition(value)),
+      toggleHintsModal: toggle => dispatch(settingsActions.toggleHintsModal(toggle)),
       resetUISettings
   }
 }

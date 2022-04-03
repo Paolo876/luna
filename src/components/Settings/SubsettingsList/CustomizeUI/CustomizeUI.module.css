@@ -7,6 +7,57 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.checkboxContainer {
+	display: inline-block;
+	position: relative;
+    /* margin-right: 1em; */
+}
+
+.checkboxContainer label {
+    cursor: pointer;
+    transform: scale(.75);
+	border: 1px solid #fff;
+	border-radius: 20px;
+	display: inline-block;
+	position: relative;
+	transition: all 0.3s ease-out;
+	width: 50px;
+	height: 25px;
+}
+
+.checkboxContainer label::after {
+	content: ' ';
+	background-color: transparent;
+    border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 1.5px;
+	left: 1px;
+	transform: translateX(0);
+	transition: transform 0.3s linear;
+	width: 20px;
+	height: 20px;
+    opacity: .6;
+}
+
+.checkboxContainer input {
+	visibility: hidden;
+	position: absolute;
+	z-index: 2;
+}
+
+.checkboxContainer input:checked + label + .active-circle {
+	transform: translate(-50%, -50%) scale(15);
+}
+
+.checkboxContainer input:checked + label::after {
+	transform: translateX(calc(125% + 0.5px));
+    background-color: #fff;
+    opacity: 1;
+
+}
+
+
 .subInput {
     border-bottom: none;
 }

@@ -1,0 +1,41 @@
+.hints {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #f4f4f4;
+    width: fit-content;
+    right: 1%; 
+    margin: 0 auto;
+    z-index: 5;
+    top: 1%;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(214, 136, 0);
+    font-weight: 300;
+    font-size: .9em;
+    font-family: 'Roboto', sans-serif;
+    padding: .9em 2.6em .9em 1.8em;
+    opacity: .95;
+    border-radius: 5px;
+}
+
+.hints .disableText {
+    font-style: italic;
+    opacity: .8;
+    margin-right: 0;
+    margin-left: auto;
+    padding-top: .2em;
+    font-size: .8em;
+    font-weight: 100;
+}
+
+.hints button {
+    position: absolute;
+    width: fit-content;
+    height: auto;
+    right: 0;
+    left: initial;
+    top: 0;
+    transform: scale(.9);
+    z-index: 15;
+}

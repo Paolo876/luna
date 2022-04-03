@@ -14,7 +14,7 @@ const initialConfigurations = (payload) => {
   };
 
   if(payload === "ui"){
-    return {containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))", primaryColor: "#45a198", settingsPosition: "top"}
+    return {containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))", primaryColor: "#45a198", settingsPosition: "top", isHintsShown: true}
   }
   if(payload === "bookmarksList"){
     return [
